@@ -4,7 +4,7 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const { body, validationResult } = require('express-validator');
 var jwt = require('jsonwebtoken');
-    var fetchuser = require('../middleware/fetchuser');
+var fetchuser = require('../middleware/fetchuser');
 const JWT_SECRET = 'amanisagoodboy';
 
 // ROUTE1:  create a user using: POST "/api/auth/createUser". no login required
@@ -27,13 +27,14 @@ router.post('/createuser', [
             return res.status(400).json({ error: "sorry, a user with this email already exists" })
         }
 
-        // create a new user
         const salt = bcrypt.genSaltSync(10);
-        const secPass = await bcrypt.hash(req.body.password, salt)
+        const secPass = await bcrypt.hash(req.body.password, salt);
+
+        // create a new user
         user = await User.create({
             name: req.body.name,
-            email: req.body.email,
-            password: secPass
+            password: secPass,
+            email: req.body.email
         });
         const data = {
             user: {
@@ -97,22 +98,24 @@ router.post('/login', [
         res.status(500).json("Internal server error");
 
     }
-    // ROUTE2: get logged in user's details: POST "/api/auth/getuser".  login required
-    router.post('/getuser', fetchuser, async (req, res) => {
+  
+})
+  // ROUTE3: get logged in user's details: POST "/api/auth/getuser".  login required
+  router.post('/getuser', fetchuser, async (req, res) => {
         
-        // if there are errors, reurn bad requests and the errors
-        try {
-            // change it to userId later if 400 does not resolve
-        userId =req.user.id;
-            const user =  await User.findById(userId).select("-password")
-            res.send(user)
-        } catch (error) {
-            console.error(error.message);
-            res.status(500).json("Internal server error");
-            
-        }
+    // if there are errors, reurn bad requests and the errors
+    try {
+        // change it to userId later if 400 does not resolve
+    user =req.user.id;
+        const user =  await User.findById(user).select("-password")
+        res.send(user)
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).json("Internal server error");
+        
+    }
 
 })
-})
+
 
 module.exports = router
