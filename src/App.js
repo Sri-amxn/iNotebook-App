@@ -2,7 +2,8 @@ import './App.css';
 import About from './components/About';
 import { Home } from './components/Home';
 import Navbar from "./components/Navbar";
-import {BrowserRouter as Router,
+import {
+  BrowserRouter as Router,
   Routes,
   Route
 } from "react-router-dom";
@@ -11,22 +12,22 @@ import Alert from './components/Alert';
 
 
 function App() {
-  return (    
+  return (
     <>
-   <NoteState>
+      <NoteState>
 
-      <Router>
+        <Router>
           <Navbar />
-          <Alert/>
-<div className="container">
-        <Routes>
-          <Route exact path="/home" element = {<Home/>} /> 
-          <Route exact path="/about"  element = {<About/>} />
-        </Routes>
-</div>
-      </Router>
-   </NoteState>
-    
+          <Alert />
+          <div className="container">
+            <Routes>
+              <Route exact path="/home" element={<Home />} />
+              <Route exact path="/about" element={<About />} />
+            </Routes>
+          </div>
+        </Router>
+      </NoteState>
+
     </>
 
   );
