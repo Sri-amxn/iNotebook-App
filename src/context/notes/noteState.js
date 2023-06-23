@@ -1,9 +1,9 @@
 import noteContext from "./noteContext";
 import React, {useState, useEffect } from "react";
-const host = "http://localhost:5000";
 
 
 const NoteState = (props) => {
+  const port = "http://localhost:5000";
   const notesInitial = []
   const [notes, setNotes] = useState(notesInitial);
   
@@ -11,7 +11,7 @@ const NoteState = (props) => {
  
     const fetchNotes = async () => {
       try {
-        const response = await fetch(`${host}/api/note/fetchallnotes`, {
+        const response = await fetch(`${port}/api/note/fetchallnotes`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -38,9 +38,8 @@ const NoteState = (props) => {
   
   // Add note
   const addNote = async (title, description, tag) => {
-    // TODO: API Call
     // API Call 
-    const response = await fetch(`${host}/api/note/addnote`, {
+    const response = await fetch(`${port}/api/note/addnote`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -78,7 +77,7 @@ const NoteState = (props) => {
   // Edit a note
   const editNote = async (id, title, description, tag) => {
     // API call
-    const response = await fetch(`${host}api/note/updatenote/${id}`, {
+    const response = await fetch(`${port}api/note/updatenote/${id}`, {
       method: 'POST',
       headers: {
         "Content-Type": "application/json",
