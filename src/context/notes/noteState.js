@@ -1,9 +1,9 @@
 import noteContext from "./noteContext";
 import React, {useState, useEffect } from "react";
+const host = "http://localhost:5000";
 
 
 const NoteState = (props) => {
-  const host = "http://localhost:5000";
   const notesInitial = []
   const [notes, setNotes] = useState(notesInitial);
   

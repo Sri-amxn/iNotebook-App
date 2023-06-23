@@ -77,8 +77,8 @@ router.post('/login', [
 
         }
 
-        const passwordComapre =  await bcrypt.compare(password, user.password)
-        if (!passwordComapre) {
+        const passwordCompare =  await bcrypt.compare(password, user.password)
+        if (!passwordCompare) {
             return res.status(400).json({ error: "try to login with valid credentials" })
         }
         const data = {
