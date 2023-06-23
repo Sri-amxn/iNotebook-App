@@ -4,7 +4,8 @@ import React, {useState, useEffect } from "react";
 
 const NoteState = (props) => {
   const host = "http://localhost:5000";
-  const [notes, setNotes] = useState([]);
+  const notesInitial = []
+  const [notes, setNotes] = useState(notesInitial);
   
   // Get all notes
  
@@ -47,17 +48,17 @@ const NoteState = (props) => {
       },
       body: JSON.stringify({ title, description, tag })
     });
-    // const json = await response.json()
-    // console.log(json)
+    const json = await response.json()
+    console.log(json)
     // setNotes(json)
   
     console.log("Adding a new note")
     const note = {
       "_id": "61322f119553781a8ca8d0e08",
       "user": "6131dc5e3e4037cd4734a0664",
-      "title": "title",
-      "description": "description",
-      "tag": "tag",
+      "title": title,
+      "description": description,
+      "tag": tag,
       "date": "2021-09-03T14:20:09.668Z",
       "__v": 0
     }
