@@ -8,30 +8,29 @@ const NoteSchema = new Schema({
         // 
     },
     title: {
-            type: String,
+            type: { type: String},
        
-        required: true
+        // required: true
       
     },
     description: {
        
-           type: String,
-        required: true
+           type: { type: String},
+        // required: true
        
 
     },
     tag: {
         
-            type: String,
+            type: { type: String},
      
-        default: "General"
+        // default: "General"
 
     },
     date: {
         type: Date,
         default: Date.now
     },
-    
 
 });
 module.exports = mongoose.model('note', NoteSchema);
