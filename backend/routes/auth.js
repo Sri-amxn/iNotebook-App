@@ -105,6 +105,7 @@ router.post('/login', [
         
     // if there are errors, reurn bad requests and the errors
     try {
+        
         // change it to userId later if 400 does not resolve
     user =req.user.id;
         const user =  await User.findById(user).select("-password")
