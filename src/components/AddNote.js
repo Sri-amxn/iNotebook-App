@@ -14,7 +14,7 @@ const AddNote = () => {
         addNote(note.title, note.description,note.tag);
     }
     const onChange = (e)=>{
-        setNote({...note, [e.target.name]: [e.target.value]})
+        setNote({...note, [e.target.name] : [e.target.value]})
 
     }
     return (
@@ -25,7 +25,7 @@ const AddNote = () => {
                 <div className="mb-3">
                     
                     <label htmlFor="title" className="form-label">Title</label>
-                    <input type="text" className="form-control" name="title"onChange={onChange} id="title" aria-describedby="emailHelp" /> 
+                    <input type="text" className="form-control" name="title" onChange={onChange} id="title" aria-describedby="emailHelp" /> 
                 </div>
                 <div className="mb-3">
                     <label htmlFor="description" className="form-label">Description</label>
