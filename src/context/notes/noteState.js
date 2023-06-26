@@ -89,8 +89,8 @@ const NoteState = (props) => {
   // Edit a note
   const editNote = async (id, title, description, tag) => {
     // API call
-    const response = await fetch(`${port}api/note/updatenote/${id}`, {
-      method: 'POST',
+    const response = await fetch(`${port}/api/note/updatenote/${id}`, {
+      method: 'PUT',
       headers: {
         "Content-Type": "application/json",
         "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjQ4YzgyYmM2M2Y2ZWIwYmYwYTc2NjVlIn0sImlhdCI6MTY4NzQ1MjYxNH0.rH3ekJyGz0SUDVOnY95PeP9qnYUTexo1sfBy-4hn938"
@@ -106,17 +106,20 @@ const NoteState = (props) => {
       for (let index = 0; index < notes.length; index++) {
         const element = notes[index];
         if (element._id === id) {
-          element.title = title;
-          element.description = description;
-          element.tag = tag;
+          notes[index].title = title;
+          notes[index].description = description;
+          notes[index].tag = tag;
         }
+        break;
         
       }
+      setNotes(notes)
   }
 
   return (
 
     <noteContext.Provider value={{ notes, addNote, deleteNote, editNote, fetchNotes }}>
+      
       {props.children}
     </noteContext.Provider>
 
