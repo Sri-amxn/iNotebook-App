@@ -52,7 +52,7 @@ const NoteState = (props) => {
     console.log(json)
     // setNotes(json)
   
-    console.log("Adding a new note")
+    // console.log("Adding a new note")
     const note = {
       "_id": "61322f119553781a8ca8d0e08",
       "user": "6131dc5e3e4037cd4734a0664",
@@ -81,7 +81,7 @@ const NoteState = (props) => {
 
     console.log(json)
     
-    console.log("Deleting the note with id" + id);
+    // console.log("Deleting the note with id" + id);
     const newNotes = notes.filter((note) => { return note._id !== id })
     setNotes(newNotes)
   }
@@ -101,19 +101,20 @@ const NoteState = (props) => {
     const json = await response.json();
 
     setNotes(json)
-
+    
     // logic to edit in client
-      for (let index = 0; index < notes.length; index++) {
-        const element = notes[index];
+    let newNotes = JSON.parse(JSON.stringify(notes))
+      for (let index = 0; index < newNotes.length; index++) {
+        const element = newNotes[index];
         if (element._id === id) {
-          notes[index].title = title;
-          notes[index].description = description;
-          notes[index].tag = tag;
+          newNotes[index].title = title;
+          newNotes[index].description = description;
+          newNotes[index].tag = tag;
+          break;
         }
-        break;
         
       }
-      setNotes(notes)
+      setNotes(newNotes)
   }
 
   return (
