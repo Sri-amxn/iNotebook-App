@@ -19,7 +19,7 @@ const Login = () => {
         if (json.success){
             // redirect
             localStorage.setItem('token', json.authtoken)
-            navigate("/home");
+            navigate("/");
 
         }
         else{
