@@ -17,14 +17,14 @@ import { useState } from 'react';
 function App() {
   const [alert, setAlert] = useState(null);
 
-  const showAlert = (message, type)=>{
-      setAlert({
-        msg: message,
-        type: type
-      })
-      setTimeout(() => {
-          setAlert(null);
-      }, 1500);
+  const showAlert = (message, type) => {
+    setAlert({
+      msg: message,
+      type: type
+    })
+    setTimeout(() => {
+      setAlert(null);
+    }, 1500);
   }
 
   return (
