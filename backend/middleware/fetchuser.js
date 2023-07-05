@@ -10,7 +10,7 @@ const fetchuser =(req, res, next )=>{
     console.log('Received token:', token);
     if(!token){
         console.log('Token not found in headers');
-        res.status(401).send({error: "Please authenticate using a valid token"})
+         res.status(401).send({error: "Please authenticate using a valid token"})
     }
     try {
         const data = jwt.verify(token, JWT_SECRET);
